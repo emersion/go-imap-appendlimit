@@ -3,8 +3,17 @@ package appendlimit
 import (
 	"fmt"
 
+	"github.com/emersion/go-imap"
 	"github.com/emersion/go-imap/server"
 )
+
+// An error that should be returned by User.CreateMessage when the message size
+// is too big.
+var ErrTooBig = server.ErrStatusResp(&imap.StatusResp{
+	Type: imap.StatusNo,
+	Code: codeTooBig,
+	Info: "Message size exceeding limit",
+})
 
 // A backend that supports retrieving per-user message size limits.
 type Backend interface {

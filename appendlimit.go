@@ -3,4 +3,4 @@ package appendlimit
 
 const Capability = "APPENDLIMIT"
 
-const CodeTooBig = "TOOBIG"
+const codeTooBig = "TOOBIG"
