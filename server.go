@@ -18,14 +18,14 @@ var ErrTooBig = server.ErrStatusResp(&imap.StatusResp{
 // A backend that supports retrieving per-user message size limits.
 type Backend interface {
 	// Get the fixed maximum message size in octets that the backend will accept
-	// when creating a new message.
+	// when creating a new message. If there is no limit, return nil.
 	CreateMessageLimit() *uint32
 }
 
 // A user that supports retrieving per-user message size limits.
 type User interface {
 	// Get the fixed maximum message size in octets that the backend will accept
-	// when creating a new message.
+	// when creating a new message. If there is no limit, return nil.
 	//
 	// This overrides the global backend limit.
 	CreateMessageLimit() *uint32
@@ -62,6 +62,7 @@ func (ext *extension) Command(name string) server.HandlerFactory {
 	return nil
 }
 
+// Create a new server extension.
 func NewExtension() server.Extension {
 	return &extension{}
 }
