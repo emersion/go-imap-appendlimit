@@ -10,7 +10,7 @@ import (
 // An error that should be returned by User.CreateMessage when the message size
 // is too big.
 var ErrTooBig = server.ErrStatusResp(&imap.StatusResp{
-	Type: imap.StatusNo,
+	Type: imap.StatusRespNo,
 	Code: codeTooBig,
 	Info: "Message size exceeding limit",
 })
