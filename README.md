@@ -10,7 +10,7 @@ The [IMAP APPENDLIMIT Extension](https://tools.ietf.org/html/rfc7889) for [go-im
 s.Enable(appendlimit.NewExtension())
 ```
 
-The backend must implement `appendlimit.Backend` and `appendlimit.User`.
+The backend must implement `appendlimit.Backend` and `appendlimit.User`. Additionally, the backend's `Mailbox.Status` implementation must handle `appendlimit.StatusAppendLimit`.
 
 ## License
 
