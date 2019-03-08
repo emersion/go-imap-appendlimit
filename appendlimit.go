@@ -7,4 +7,6 @@ import (
 
 const Capability = "APPENDLIMIT"
 
+const StatusAppendLimit imap.StatusItem = "APPENDLIMIT"
+
 const codeTooBig imap.StatusRespCode = "TOOBIG"

@@ -31,6 +31,16 @@ type User interface {
 	CreateMessageLimit() *uint32
 }
 
+// StatusSetAppendLimit sets limit value in MailboxStatus object,
+// nil pointer value will remove limit.
+func StatusSetAppendLimit(status *imap.MailboxStatus, value *uint32) {
+	if value != nil {
+		status.Items[StatusAppendLimit] = *value
+	} else {
+		delete(status.Items, StatusAppendLimit)
+	}
+}
+
 type extension struct{}
 
 func formatCapability(limit uint32) string {
